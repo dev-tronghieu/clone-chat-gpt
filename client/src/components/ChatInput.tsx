@@ -8,7 +8,7 @@ interface ChatInputProps {
 const ChatInput = ({ onSubmit }: ChatInputProps) => {
     const textArea = useRef<HTMLTextAreaElement>(null);
 
-    const submitMessage = () => {
+    const handleSendMessage = () => {
         if (textArea.current === null) return;
         const message = textArea.current.value.trim();
         if (message !== "") onSubmit(message);
@@ -18,27 +18,28 @@ const ChatInput = ({ onSubmit }: ChatInputProps) => {
 
     return (
         <form
-            className="max-w-7xl w-full px-2 xl:px-0 py-4 flex gap-2"
+            className="bg-secondary max-w-7xl w-full p-2 xl:px-0 flex gap-2"
             onSubmit={(e) => {
                 e.preventDefault();
-                submitMessage();
+                handleSendMessage();
             }}
             onKeyDown={(e) => {
-                {
-                    e.key === "Enter" && !e.shiftKey && submitMessage();
+                if (e.key === "Enter" && !e.shiftKey) {
+                    e.preventDefault();
+                    handleSendMessage();
                 }
             }}
         >
             <textarea
                 ref={textArea}
+                placeholder="Ask something..."
                 rows={1}
                 cols={1}
-                placeholder="Ask something..."
-                className="w-full p-2 bg-transparent border-none outline-none bg-tertiary text-gray-200"
+                className="w-full p-2 bg-transparent border-none outline-none  text-white text-lg scrollbar-hide"
             ></textarea>
 
             <button className="outline-none" type="submit">
-                <img className="w-8 h-8" src={sendSvg} alt="Send Icon" />
+                <img className="w-8 h-8 mx-2" src={sendSvg} alt="Send Icon" />
             </button>
         </form>
     );

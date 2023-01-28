@@ -9,7 +9,12 @@ enum Profile {
 }
 
 const App = () => {
-    const [messages, setMessages] = useState<IMessage[]>([]);
+    const [messages, setMessages] = useState<IMessage[]>([
+        {
+            content: "Hi, I'm a chatbot. Ask me anything!",
+            isFromAi: true,
+        },
+    ]);
     const [isAnswering, setIsAnswering] = useState(false);
 
     const ensureEndingSign = (content: string) => {
@@ -54,9 +59,9 @@ const App = () => {
     return (
         <div
             id="app"
-            className="w-screen h-screen bg-slate-500 flex flex-col items-center justify-between"
+            className="w-screen h-screen bg-background flex flex-col items-center justify-between"
         >
-            <div className="max-w-7xl w-full h-full flex flex-col items-center justify-between">
+            <div className="max-w-7xl w-full h-full bg-primary drop-shadow-2xl flex flex-col justify-between items-center">
                 <ChatContainer messages={messages} isAnswering={isAnswering} />
                 <ChatInput onSubmit={handleSubmit} />
             </div>

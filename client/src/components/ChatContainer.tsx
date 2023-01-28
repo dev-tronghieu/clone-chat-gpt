@@ -24,7 +24,7 @@ const ChatContainer = (props: ChatContainerProps) => {
     return (
         <div
             ref={chatContainerRef}
-            className="scroll-smooth w-full h-full flex flex-col overflow-x-hidden overflow-y-scroll"
+            className="scroll-smooth w-full h-full divide-y divide-white overflow-x-hidden overflow-y-scroll scrollbar-hide flex flex-col"
         >
             {props.messages.map((message) => {
                 return (

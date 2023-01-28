@@ -1,24 +1,10 @@
-/* -- Scrollbar -- */
-/* width */
-::-webkit-scrollbar {
-    width: 12px;
+/* For Webkit-based browsers (Chrome, Safari and Opera) */
+.scrollbar-hide::-webkit-scrollbar {
+    display: none;
 }
 
-/* Track */
-::-webkit-scrollbar-track {
-    background: transparent;
-}
-
-/* Handle */
-::-webkit-scrollbar-thumb {
-    background: #626394;
-    cursor: pointer;
-
-    /* Shadow on the left */
-    box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
-}
-
-/* Handle on hover */
-::-webkit-scrollbar-thumb:hover {
-    background: #8384bb;
+/* For IE, Edge and Firefox */
+.scrollbar-hide {
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none; /* Firefox */
 }
