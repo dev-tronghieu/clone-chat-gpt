@@ -2,6 +2,8 @@ import { useState } from "react";
 import "./App.css";
 import ChatContainer from "./components/ChatContainer";
 import ChatInput from "./components/ChatInput";
+import Footer from "./components/Footer";
+import Header from "./components/Header";
 
 enum Profile {
     bot,
@@ -61,10 +63,12 @@ const App = () => {
             id="app"
             className="w-screen h-screen bg-background flex flex-col items-center justify-between"
         >
-            <div className="max-w-7xl w-full h-full bg-primary drop-shadow-2xl flex flex-col justify-between items-center">
+            <Header />
+            <div className="max-w-7xl w-full h-[80%] bg-primary drop-shadow-2xl flex flex-col justify-between items-center">
                 <ChatContainer messages={messages} isAnswering={isAnswering} />
                 <ChatInput onSubmit={handleSubmit} />
             </div>
+            <Footer />
         </div>
     );
 };
